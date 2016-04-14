@@ -2,6 +2,7 @@ package org.jboss.weld.events;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +80,7 @@ public class WildcardUnresolvableTypeVariableTest {
         // Note that we can only work with "runtime type" = ArrayList.class and "specified type" = List<? extends Number>
         wilcardBoundEvent.fire(new ArrayList<T>());
         assertNotNull(AnyListObserver.observedList);
+        assertTrue(AnyListObserver.observedList.isEmpty());
     }
 
     /*
