@@ -91,11 +91,12 @@ public class WildcardUnresolvableTypeVariableTest {
     }
 
     /*
-     * The following methods emulate the only relevant TCK test - FireEventTest.testTypeVariableEventTypeFails() Should always fail on CDI 1.0
+     * The following methods emulate the only relevant TCK test - FireEventTest.testTypeVariableEventTypeFails()
+     * Should always fail on CDI 1.0
      */
 
     // Note that this method passes on OWB 1.6 which is probably some bug caused during type variable resolution (testFoo() throws exception correctly)
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public <T extends Number> void testAnyListObserverBoundWildcard() {
         AnyListObserver.observedList = null;
         // Note that we can only work with "runtime type" = ArrayList.class and "specified type" = List<? extends Number>
